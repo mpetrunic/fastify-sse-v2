@@ -1,7 +1,7 @@
 {
-    "name": "",
-    "version": "0.0.1",
-    "description": "",
+    "name": "fastify-sse-v2",
+    "version": "1.0.0",
+    "description": "Fastify plugin for sending server side events.",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
@@ -19,14 +19,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ChainSafe/.git"
+        "url": "git+https://github.com/mpetrunic/fastify-sse-v2.git"
     },
-    "author": "ChainSafe Systems",
-    "license": "Apache-2.0",
+    "author": "Marin Petrunić <marin@nodefactory.io>",
+    "license": "MIT",
     "bugs": {
-        "url": "https://github.com/ChainSafe//issues"
+        "url": "https://github.com/mpetrunic/fastify-sse-v2/issues"
     },
-    "homepage": "https://github.com/ChainSafe/#readme",
+    "homepage": "https://github.com/mpetrunic/fastify-sse-v2#readme",
     "devDependencies": {
         "@babel/cli": "^7.2.3",
         "@babel/core": "^7.3.3",
@@ -42,18 +42,9 @@
         "chai": "^4.2.0",
         "eslint": "5.16.0",
         "eslint-plugin-import": "^2.18.2",
-        "karma": "^4.4.1",
-        "karma-chai": "^0.1.0",
-        "karma-chrome-launcher": "^3.1.0",
-        "karma-cli": "^2.0.0",
-        "karma-mocha": "^1.3.0",
-        "karma-spec-reporter": "^0.0.32",
-        "karma-webpack": "^4.0.2",
         "mocha": "^6.1.4",
-        "ts-loader": "^6.2.1",
         "ts-node": "^8.3.0",
-        "typescript": "^3.5.1",
-        "webpack": "^4.41.2"
+        "typescript": "^3.5.1"
     },
     "dependencies": {}
 }
