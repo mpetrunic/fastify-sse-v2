@@ -1,0 +1,23 @@
+  
+{
+    "cache": false,
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "**/*.js",
+      "**/lib/**",
+      "**/coverage/**",
+      "**/scripts/**",
+      "**/test/**",
+      "**/types/**",
+      "**/bin/**",
+      "**/node_modules/**"
+    ],
+    "all": false,
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
