@@ -2,6 +2,7 @@ import {expect} from "chai";
 import {FastifyInstance, EventMessage} from "fastify";
 import {getEventSource, getFastifyServer} from "./utils";
 import pushable, {Pushable} from "it-pushable";
+import sinon from "sinon";
 
 describe("Test SSE plugin", function () {
 
@@ -67,6 +68,21 @@ describe("Test SSE plugin", function () {
       expect(evt.data).equal("Something");
       expect(evt.type).equal("message");
       expect(evt.lastEventId).equal("1");
+      eventsource.close();
+      done();
+    });
+
+  });
+
+  it("should send multiple events", function (done) {
+    const eventsource = getEventSource(server);
+    source.push({id: "1", event: "message", data: "Something"});
+    source.push({id: "2", event: "message", data: "Something"});
+    source.end();
+    const spy = sinon.spy();
+    eventsource.onmessage = (() => spy());
+    eventsource.onerror = (() => {
+      expect(spy.callCount).to.be.equal(2);
       eventsource.close();
       done();
     });
