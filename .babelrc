@@ -2,7 +2,7 @@
     "presets": [
       [
         "@babel/env",
-        {"targets": {"node":"lts"}}
+        {"targets": {"node":"10"}}
       ],
       "@babel/typescript"
     ],
