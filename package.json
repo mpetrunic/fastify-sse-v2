@@ -56,6 +56,6 @@
         "it-to-stream": "^0.1.1"
     },
     "peerDependencies": {
-        "fastify": "^2.13.0"
+        "fastify": "2.x"
     }
 }
