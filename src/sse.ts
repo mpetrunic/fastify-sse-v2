@@ -3,8 +3,6 @@ import {EventMessage} from "fastify";
 
 export function getOutputStream(): Transform {
   return new PassThrough({
-    write: transformEventStream,
-    transform: transformEventStream,
     flush(callback: (error?: (Error | null), data?: unknown) => void): void {
       callback(null, serializeSSEEvent({event: "end", data: "Stream closed"}));
     }
@@ -12,12 +10,20 @@ export function getOutputStream(): Transform {
 }
 
 export function transformEventStream(
-  chunk: EventMessage, encoding: string, callback: (error?: (Error | null), data?: string) => void
+  chunk: string, encoding: string, callback: (error?: (Error | null), data?: string) => void
 ): void {
   try {
-    callback(null, serializeSSEEvent(chunk));
+    callback(null, serializeSSEEvent({
+      data: chunk
+    }));
   } catch (e) {
     callback(e);
+  }
+}
+
+export async function* transformAsyncIterable(source: AsyncIterable<EventMessage>): AsyncIterable<string> {
+  for await (const message of source) {
+    yield serializeSSEEvent(message);
   }
 }
 

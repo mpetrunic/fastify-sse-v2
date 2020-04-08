@@ -1,7 +1,7 @@
 import fastify, {EventMessage, FastifyReply} from "fastify";
 import {IncomingMessage, Server, ServerResponse} from "http";
 import {SsePluginOptions} from "./types";
-import {getOutputStream, serializeSSEEvent} from "./sse";
+import {getOutputStream, serializeSSEEvent, transformAsyncIterable} from "./sse";
 import toStream from "it-to-stream";
 
 export const plugin: fastify.Plugin<Server, IncomingMessage, ServerResponse, SsePluginOptions> = 
@@ -15,6 +15,6 @@ export const plugin: fastify.Plugin<Server, IncomingMessage, ServerResponse, Sse
             .header("Connection", "keep-alive")
             .header("Cache-Control", "no-cache")
             .send(outputStream);
-          toStream(source).pipe(outputStream);
+          toStream(transformAsyncIterable(source)).pipe(outputStream);
         });
     };

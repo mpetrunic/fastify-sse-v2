@@ -5,9 +5,7 @@
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
-        "test": "yarn run test:node && yarn run test:web",
-        "test:node": "mocha -r ts-node/register test/**/*.spec.ts ",
-        "test:web": "karma start",
+        "test": "mocha -r ts-node/register test/**/*.spec.ts ",
         "clean": "rm -rf lib",
         "lint": "eslint --ext .ts src/",
         "check-types": "tsc --noEmit",
