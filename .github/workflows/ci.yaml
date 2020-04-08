@@ -1,6 +1,6 @@
 name: CI check
 
-on: [push,pr]
+on: [push,pull]
 
 jobs:
   build:
