@@ -1,10 +1,10 @@
-import fastify, {EventMessage, FastifyReply} from "fastify";
+import {EventMessage, FastifyReply, Plugin} from "fastify";
 import {IncomingMessage, Server, ServerResponse} from "http";
 import {SsePluginOptions} from "./types";
 import {getOutputStream, serializeSSEEvent, transformAsyncIterable} from "./sse";
 import toStream from "it-to-stream";
 
-export const plugin: fastify.Plugin<Server, IncomingMessage, ServerResponse, SsePluginOptions> = 
+export const plugin: Plugin<Server, IncomingMessage, ServerResponse, SsePluginOptions> =
     async function (instance, options): Promise<void> {
       instance.decorateReply( 
         "sse",

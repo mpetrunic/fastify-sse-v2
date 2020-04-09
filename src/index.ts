@@ -1,10 +1,14 @@
 import fastifyPlugin from "fastify-plugin";
 import {plugin} from "./plugin";
+import {IncomingMessage, Server, ServerResponse} from "http";
+import {Plugin} from "fastify";
+import {SsePluginOptions} from "./types";
 
-export const FastifySSEPlugin = fastifyPlugin(plugin, {
-  name: "fastify-sse-v2",
-  fastify: "2.x",
-});
+export const FastifySSEPlugin: Plugin<Server, IncomingMessage, ServerResponse, SsePluginOptions> 
+    = fastifyPlugin(plugin, {
+      name: "fastify-sse-v2",
+      fastify: "2.x",
+    });
 
 declare module "fastify" {
 
