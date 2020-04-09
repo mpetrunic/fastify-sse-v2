@@ -21,14 +21,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mpetrunic/fastify-sse-v2.git"
+        "url": "git+https://github.com/nodefactoryio/fastify-sse-v2.git"
     },
     "author": "Marin Petrunić <marin@nodefactory.io>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/mpetrunic/fastify-sse-v2/issues"
+        "url": "https://github.com/nodefactoryio/fastify-sse-v2/issues"
     },
-    "homepage": "https://github.com/mpetrunic/fastify-sse-v2#readme",
+    "homepage": "https://github.com/nodefactoryio/fastify-sse-v2#readme",
     "devDependencies": {
         "@babel/cli": "^7.2.3",
         "@babel/core": "^7.3.3",
