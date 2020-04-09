@@ -17,7 +17,7 @@ jobs:
       - name: Build library
         run: yarn install --frozen-lockfile && yarn run build
       - name: Publish if version has been updated
-        uses: pascalgn/npm-publish-action@51fdb4531e99aac1873764ef7271af448dc42ab4
+        uses: pascalgn/npm-publish-action@f93f535ece805e795c958019e90c63cbb2db326e
         with: # All of theses inputs are optional
           tag_name: "v%s"
           tag_message: "v%s"
