@@ -4,6 +4,10 @@
     "description": "Fastify plugin for sending server side events.",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
+    "files": [
+        "lib",
+        "src"
+    ],
     "scripts": {
         "test": "mocha -r ts-node/register test/**/*.spec.ts ",
         "clean": "rm -rf lib",
