@@ -1,5 +1,6 @@
 # Fastify SSE Plugin
 ![CI check](https://github.com/NodeFactoryIo/fastify-sse-v2/workflows/CI%20check/badge.svg?branch=master)
+[![npm version](https://badge.fury.io/js/fastify-sse-v2.svg)](https://badge.fury.io/js/fastify-sse-v2)
 
 Fastify plugin for sending [Server-sent events](https://en.wikipedia.org/wiki/Server-sent_events).
 
