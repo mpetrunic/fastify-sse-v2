@@ -26,12 +26,12 @@ const server = fastify();
 server.register(FastifySSEPlugin);
 
 server.get("/", function (req, res) {
-    res.sse(async function * source () {
+    res.sse((async function * source () {
           for (let i = 0; i < 10; i++) {
             sleep(2000);
             yield {id: String(i), data: "Some message"};
           }
-    });
+    })());
 });
 ```
 
@@ -45,10 +45,11 @@ const server = fastify();
 server.register(FastifySSEPlugin);
 
 server.get("/", function (req, res) {
+    const eventEmitter = new EventEmitter();
     res.sse(new EventIterator(
                 ({ push }) => {
-                  this.addEventListener("some_event", push)
-                  return () => this.removeEventListener("some_event", push)
+                  eventEmitter.on("some_event", push)
+                  return () => eventEmitter.removeEventListener("some_event", push)
                 }
         )
     );
