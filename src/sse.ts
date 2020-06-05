@@ -44,6 +44,6 @@ export function serializeSSEEvent(chunk: EventMessage): string {
   if(!payload) {
     return "";
   }
-  payload += "\n\n";
+  payload += "\n";
   return payload;
 }
