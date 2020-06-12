@@ -1,13 +1,17 @@
-import fastify, {FastifyInstance, EventMessage} from "fastify";
+import fastify, {EventMessage, FastifyInstance} from "fastify";
 import {FastifySSEPlugin} from "../src";
 import {AddressInfo} from "net";
 import EventSource from "eventsource";
+import {Pushable} from "it-pushable";
 
-export async function getFastifyServer(source: AsyncIterable<EventMessage>): Promise<FastifyInstance> {
+export async function getFastifyServer(source: Pushable<EventMessage>): Promise<FastifyInstance> {
   const server = fastify();
   server.register(FastifySSEPlugin);
   server.get("/", function (req, res) {
-    res.sse(source);
+    const abortSignal = res.sse(source);
+    abortSignal.addEventListener("abort", () => {
+      source.end();
+    });
   });
   await new Promise((resolve, reject) => {
     server.listen(0, "127.0.0.1", (err) => {

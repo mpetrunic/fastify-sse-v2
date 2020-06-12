@@ -4,7 +4,7 @@ import {IncomingMessage, Server, ServerResponse} from "http";
 import {Plugin} from "fastify";
 import {SsePluginOptions} from "./types";
 
-export const FastifySSEPlugin: Plugin<Server, IncomingMessage, ServerResponse, SsePluginOptions> 
+export const FastifySSEPlugin: Plugin<Server, IncomingMessage, ServerResponse, SsePluginOptions>
     = fastifyPlugin(plugin, {
       name: "fastify-sse-v2",
       fastify: "2.x",
@@ -35,6 +35,6 @@ declare module "fastify" {
   }
 
   interface FastifyReply<HttpResponse> {
-    sse(source: AsyncIterable<EventMessage>): void;
+    sse(source: AsyncIterable<EventMessage>): AbortSignal;
   }
 }

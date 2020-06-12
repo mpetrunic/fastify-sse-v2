@@ -46,12 +46,15 @@ server.register(FastifySSEPlugin);
 
 server.get("/", function (req, res) {
     const eventEmitter = new EventEmitter();
-    res.sse(new EventIterator(
+    const abortSignal = res.sse(new EventIterator(
                 ({ push }) => {
                   eventEmitter.on("some_event", push)
-                  return () => eventEmitter.removeEventListener("some_event", push)
                 }
         )
     );
+    abortSignal.addEventListener("abort", () => {
+      //or trigger EvenInterator stop callback
+      eventEmitter.removeAllListeners("some_event");
+    });
 });
 ```

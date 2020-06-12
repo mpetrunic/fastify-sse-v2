@@ -8,19 +8,19 @@ describe("Test SSE plugin", function () {
 
   let server: FastifyInstance;
   let source: Pushable<EventMessage>;
-  
+
   beforeEach(async function () {
     source = pushable<EventMessage>();
     server = await getFastifyServer(source);
   });
-  
+
   afterEach(async function () {
     source.end();
     if(server) {
-      await server.close(); 
+      await server.close();
     }
   });
-  
+
   it("should open event stream", function (done) {
     const eventsource = getEventSource(server);
     eventsource.addEventListener("open", function () {
@@ -86,7 +86,18 @@ describe("Test SSE plugin", function () {
       eventsource.close();
       done();
     });
+  });
 
+  it("should break iterator on connection closing", async function() {
+    const eventsource = getEventSource(server);
+    source.push({id: "1", event: "message", data: "Something"});
+    await new Promise((resolve => {
+      eventsource.onmessage = (() => resolve());
+    }));
+    const spy = sinon.spy(source, "end");
+    eventsource.close();
+    await new Promise((resolve => setTimeout(resolve, 100)));
+    expect(spy.callCount).to.equal(1);
   });
 
 });
