@@ -58,3 +58,6 @@ server.get("/", function (req, res) {
     });
 });
 ```
+
+`reply.sse` method returns AbortSignal which will emit "abort" event if request connection is being closed.
+This event callback can be used to clean event listeners.
