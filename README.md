@@ -47,7 +47,7 @@ server.register(FastifySSEPlugin);
 server.get("/", function (req, res) {
     const eventEmitter = new EventEmitter();
     res.sse(new EventIterator(
-                ({ push }) => {
+                (push) => {
                   eventEmitter.on("some_event", push)
                   return () => eventEmitter.removeEventListener("some_event", push)
                 }
@@ -55,3 +55,8 @@ server.get("/", function (req, res) {
     );
 });
 ```
+
+##### Note
+- to remove event listeners (or some other cleanup) when client closes connection,
+ you can listen on fastify's [req.raw connection close event](https://nodejs.org/docs/latest-v12.x/api/http.html#http_event_close_2):
+
