@@ -1,4 +1,4 @@
-import fastify, {FastifyInstance, EventMessage} from "fastify";
+import fastify, {EventMessage, FastifyInstance} from "fastify";
 import {FastifySSEPlugin} from "../src";
 import {AddressInfo} from "net";
 import EventSource from "eventsource";
