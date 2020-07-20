@@ -1,6 +1,6 @@
 {
     "name": "fastify-sse-v2",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Fastify plugin for sending server side events.",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
@@ -48,7 +48,7 @@
         "eslint": "5.16.0",
         "eslint-plugin-import": "^2.18.2",
         "eventsource": "^1.0.7",
-        "fastify": "^2.13.0",
+        "fastify": "^2.15.2",
         "it-pushable": "^1.4.0",
         "mocha": "^6.1.4",
         "sinon": "^9.0.2",

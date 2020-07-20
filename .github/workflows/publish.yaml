@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master # Change this to your default branch
+      - 1.x # Change this to your default branch
 jobs:
   npm-publish:
     name: npm-publish
