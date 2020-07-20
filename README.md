@@ -4,6 +4,8 @@
 
 Fastify plugin for sending [Server-sent events](https://en.wikipedia.org/wiki/Server-sent_events).
 
+For fastify@2.x use fastify-sse-v2@1.x!
+
 ### How to use?
 
 ```terminal
