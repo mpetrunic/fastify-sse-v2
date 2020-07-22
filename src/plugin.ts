@@ -13,7 +13,8 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> =
           outputStream.write(serializeSSEEvent({retry: options.retryDelay || 3000}));
           this.type("text/event-stream")
             .header("Connection", "keep-alive")
-            .header("Cache-Control", "no-cache,no-transform");
+            .header("Cache-Control", "no-cache,no-transform")
+            .header("x-no-compression", true);
           toStream(transformAsyncIterable(source)).pipe(outputStream);
         });
     };
