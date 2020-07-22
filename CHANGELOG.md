@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1]
+## Bugfix
+- add headers to prevent compression
+
 ## [2.0.0]
 ## Feature
 - fastify v3 support
@@ -26,7 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - update what files gets published on npm
 
-[Unreleased]: https://github.com/nodefactoryio/fastify-sse-v2/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/nodefactoryio/fastify-sse-v2/compare/v2.0.1...HEAD
+[2.0.0]: https://github.com/nodefactoryio/fastify-sse-v2/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/nodefactoryio/fastify-sse-v2/compare/v1.0.4...v2.0.0
 [1.0.4]: https://github.com/nodefactoryio/fastify-sse-v2/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/nodefactoryio/fastify-sse-v2/compare/v1.0.2...v1.0.3
