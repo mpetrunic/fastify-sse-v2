@@ -9,11 +9,11 @@ export const plugin: Plugin<Server, IncomingMessage, ServerResponse, SsePluginOp
       instance.decorateReply(
         "sse",
         function (this: FastifyReply<ServerResponse>, source: AsyncIterable<EventMessage>): void {
+          this.res.setHeader("Content-Type","text/event-stream");
+          this.res.setHeader("Connection", "keep-alive");
+          this.res.setHeader("Cache-Control", "no-cache,no-transform");
+          this.res.setHeader("x-no-compression", 1);
           this.res.write(serializeSSEEvent({retry: options.retryDelay || 3000}));
-          this.type("text/event-stream")
-            .header("Connection", "keep-alive")
-            .header("Cache-Control", "no-cache,no-transform")
-            .header("x-no-compression", true);
           toStream(transformAsyncIterable(source)).pipe(this.res);
         });
     };
