@@ -1,6 +1,5 @@
 import {EventMessage, FastifyPluginAsync, FastifyReply} from "fastify";
 import {SsePluginOptions} from "./types";
-import {Writable} from "stream";
 import {serializeSSEEvent, transformAsyncIterable} from "./sse";
 import toStream from "it-to-stream";
 
@@ -9,12 +8,11 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> =
       instance.decorateReply(
         "sse",
         function (this: FastifyReply, source: AsyncIterable<EventMessage>): void {
-          const outputStream: Writable = this.raw;
-          outputStream.write(serializeSSEEvent({retry: options.retryDelay || 3000}));
-          this.type("text/event-stream")
-            .header("Connection", "keep-alive")
-            .header("Cache-Control", "no-cache,no-transform")
-            .header("x-no-compression", true);
-          toStream(transformAsyncIterable(source)).pipe(outputStream);
+          this.raw.setHeader("Content-Type","text/event-stream");
+          this.raw.setHeader("Connection", "keep-alive");
+          this.raw.setHeader("Cache-Control", "no-cache,no-transform");
+          this.raw.setHeader("x-no-compression", 1);
+          this.raw.write(serializeSSEEvent({retry: options.retryDelay || 3000}));
+          toStream(transformAsyncIterable(source)).pipe(this.raw);
         });
     };
