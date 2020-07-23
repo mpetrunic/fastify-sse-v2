@@ -1,6 +1,6 @@
 {
     "name": "fastify-sse-v2",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "Fastify plugin for sending server side events.",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
