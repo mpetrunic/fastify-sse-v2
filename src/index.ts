@@ -6,6 +6,8 @@ export const FastifySSEPlugin = fastifyPlugin(plugin, {
   fastify: "3.x",
 });
 
+export default FastifySSEPlugin
+
 declare module "fastify" {
 
   interface EventMessage {
