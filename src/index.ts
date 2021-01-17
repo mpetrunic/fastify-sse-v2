@@ -6,7 +6,7 @@ export const FastifySSEPlugin = fastifyPlugin(plugin, {
   fastify: "3.x",
 });
 
-export default FastifySSEPlugin
+export default FastifySSEPlugin;
 
 declare module "fastify" {
 
