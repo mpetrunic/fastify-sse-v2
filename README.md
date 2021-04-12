@@ -39,6 +39,7 @@ server.get("/", function (req, res) {
 
 ##### Sending events from EventEmmiters
 
+Using EventIterator dependency:
 ```javascript
 import {FastifySSEPlugin} from "fastify-sse-v2";
 import EventIterator from "event-iterator";
@@ -57,6 +58,29 @@ server.get("/", function (req, res) {
     );
 });
 ```
+
+Without additional dependency ([not supported in all nodejs versions](https://nodejs.org/api/events.html#events_events_on_emitter_eventname_options):
+```javascript
+import {FastifySSEPlugin} from "fastify-sse-v2";
+import {on} from "events";
+
+const server = fastify();
+server.register(FastifySSEPlugin);
+
+server.get("/", function (req, res) {
+    res.sse(
+  (async function* () {
+    for await (const event of on(eventEmmitter, "update")) {
+      yield {
+        type: event.name,
+        data: JSON.stringify(event),
+      };
+    }
+  })()
+);
+});
+```
+
 
 ##### Note
 - to remove event listeners (or some other cleanup) when client closes connection,
