@@ -7,9 +7,11 @@ export async function getFastifyServer(source: AsyncIterable<EventMessage>): Pro
   const server = fastify();
   server.register(FastifySSEPlugin);
   server.get("/", function (req, res) {
+    res.header("x-test-header2", "test2");
     res.sse(source);
   });
-  await new Promise((resolve, reject) => {
+  await server.ready();
+  await new Promise<void>((resolve, reject) => {
     server.listen(0, "127.0.0.1", (err) => {
       if(err) {
         return reject(err);
