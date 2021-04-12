@@ -1,8 +1,9 @@
 import {expect} from "chai";
 import {FastifyInstance, EventMessage} from "fastify";
-import {getEventSource, getFastifyServer} from "./utils";
+import {getEventSource, getFastifyServer, getBaseUrl} from "./utils";
 import pushable, {Pushable} from "it-pushable";
 import sinon from "sinon";
+import http from "http";
 
 describe("Test SSE plugin", function () {
 
@@ -28,6 +29,18 @@ describe("Test SSE plugin", function () {
       eventsource.close();
       done();
     });
+  });
+  
+  it("should set plugin headers", function (done) {
+    try {
+      http.get(getBaseUrl(server), {timeout: 100}, (res) => {
+        expect(res.headers["x-test-header2"]).to.be.deep.equal("test2");
+        res.destroy();
+        done();
+      });
+    } catch(e) {
+      done(e);
+    }
   });
 
   it("should set retry", function (done) {

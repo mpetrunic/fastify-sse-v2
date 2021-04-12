@@ -8,6 +8,9 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> =
       instance.decorateReply(
         "sse",
         function (this: FastifyReply, source: AsyncIterable<EventMessage>): void {
+          Object.entries(this.getHeaders()).forEach(([key, value]) => {
+            this.raw.setHeader(key, value);
+          });
           this.raw.setHeader("Content-Type","text/event-stream");
           this.raw.setHeader("Connection", "keep-alive");
           this.raw.setHeader("Cache-Control", "no-cache,no-transform");
