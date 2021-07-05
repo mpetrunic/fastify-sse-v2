@@ -3,7 +3,7 @@ import {FastifyInstance, EventMessage} from "fastify";
 import {getEventSource, getFastifyServer, getBaseUrl} from "./utils";
 import pushable, {Pushable} from "it-pushable";
 import sinon from "sinon";
-import http from "http";
+import {get} from "http";
 
 describe("Test SSE plugin", function () {
 
@@ -33,7 +33,7 @@ describe("Test SSE plugin", function () {
   
   it("should set plugin headers", function (done) {
     try {
-      http.get(getBaseUrl(server), {timeout: 100}, (res) => {
+      get(getBaseUrl(server), {timeout: 100}, (res) => {
         expect(res.headers["x-test-header2"]).to.be.deep.equal("test2");
         res.destroy();
         done();
