@@ -50,7 +50,7 @@ server.register(FastifySSEPlugin);
 server.get("/", function (req, res) {
     const eventEmitter = new EventEmitter();
     res.sse(new EventIterator(
-                (push) => {
+                ({push}) => {
                   eventEmitter.on("some_event", push)
                   return () => eventEmitter.removeEventListener("some_event", push)
                 }
@@ -70,11 +70,8 @@ server.register(FastifySSEPlugin);
 server.get("/", function (req, res) {
     res.sse(
   (async function* () {
-    for await (const event of on(eventEmmitter, "update")) {
-      yield {
-        type: event.name,
-        data: JSON.stringify(event),
-      };
+    for await (const event of on(eventEmitter, "update")) {
+      yield event[0];
     }
   })()
 );
