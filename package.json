@@ -44,7 +44,7 @@
         "chai": "^4.2.0",
         "eslint": "5.16.0",
         "eslint-plugin-import": "^2.18.2",
-        "eventsource": "^1.0.7",
+        "eventsource": "^2.0.2",
         "fastify": "3.18.1",
         "it-pushable": "^1.4.0",
         "mocha": "^8.3.2",
