@@ -46,7 +46,6 @@
         "eslint-plugin-import": "^2.18.2",
         "eventsource": "^1.0.7",
         "fastify": "3.18.1",
-        "it-pushable": "^1.4.0",
         "mocha": "^8.3.2",
         "sinon": "^9.0.2",
         "ts-node": "^8.3.0",
@@ -54,7 +53,8 @@
     },
     "dependencies": {
         "fastify-plugin": "2.3.4",
-        "it-to-stream": "^1.0.0"
+        "it-to-stream": "^1.0.0",
+        "it-pushable": "^1.4.2"
     },
     "peerDependencies": {
         "fastify": ">=3"

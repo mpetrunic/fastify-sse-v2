@@ -1,15 +1,22 @@
-import fastify, {EventMessage, FastifyInstance} from "fastify";
+import fastify, {EventMessage, FastifyInstance, RouteHandler} from "fastify";
 import {FastifySSEPlugin} from "../src";
 import {AddressInfo} from "net";
 import EventSource from "eventsource";
+import { isAsyncIterable } from "../src/util";
 
-export async function getFastifyServer(source: AsyncIterable<EventMessage>): Promise<FastifyInstance> {
+export async function getFastifyServer(
+  source: AsyncIterable<EventMessage> | RouteHandler
+): Promise<FastifyInstance> {
   const server = fastify();
   server.register(FastifySSEPlugin);
-  server.get("/", function (req, res) {
-    res.header("x-test-header2", "test2");
-    res.sse(source);
-  });
+  if(!isAsyncIterable(source)) {
+    server.get("/", source);
+  } else {
+    server.get("/", function (req, res) {
+      res.header("x-test-header2", "test2");
+      res.sse(source);
+    });
+  }
   await server.ready();
   await new Promise<void>((resolve, reject) => {
     server.listen(0, "127.0.0.1", (err) => {
