@@ -53,10 +53,10 @@
         "typescript": "^3.5.1"
     },
     "dependencies": {
-        "fastify-plugin": "2.0.1",
-        "it-to-stream": "^0.1.1"
+        "fastify-plugin": "2.3.4",
+        "it-to-stream": "^1.0.0"
     },
     "peerDependencies": {
-        "fastify": "3.x"
+        "fastify": ">=3"
     }
 }
