@@ -1,4 +1,5 @@
 import fastifyPlugin from "fastify-plugin";
+import {Pushable} from "it-pushable";
 import {plugin} from "./plugin";
 
 export const FastifySSEPlugin = fastifyPlugin(plugin, {
@@ -33,7 +34,8 @@ declare module "fastify" {
   }
 
   interface FastifyReply {
-    sse(source: AsyncIterable<EventMessage>): void;
+    sseContext: {source: Pushable<EventMessage>};
+    sse(source: AsyncIterable<EventMessage> | EventMessage): void;
   }
 }
 

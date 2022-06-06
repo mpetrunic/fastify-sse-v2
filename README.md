@@ -36,30 +36,33 @@ server.get("/", function (req, res) {
     })());
 });
 ```
+#### Sending individual events
 
-##### Sending events from EventEmmiters
-
-Using EventIterator dependency:
 ```javascript
 import {FastifySSEPlugin} from "fastify-sse-v2";
-import EventIterator from "event-iterator";
 
 const server = fastify();
 server.register(FastifySSEPlugin);
 
-server.get("/", function (req, res) {
-    const eventEmitter = new EventEmitter();
-    res.sse(new EventIterator(
-                (push) => {
-                  eventEmitter.on("some_event", push)
-                  return () => eventEmitter.removeEventListener("some_event", push)
-                }
-        )
-    );
+server.get("/", async function (req, res) {
+    for (let i = 0; i < 10; i++) {
+      await sleep(2000);
+      res.sse({id: String(i), data: "Some message"});
+    }
 });
+
+fastify.get('/listenForChanges', {}, (request, reply) => {
+    const listenStream = fastify.db.watch('doc-uuid')
+        .on('data', (data)=>reply.sse({ data: JSON.stringify(data) }))
+        .on('delete', () => reply.sse({ event: 'close' })
+    request.socket.on('close', ()=>listenStream.end())
+})
 ```
 
-Without additional dependency ([not supported in all nodejs versions](https://nodejs.org/api/events.html#events_events_on_emitter_eventname_options):
+##### Sending events from EventEmmiters
+
+* [not supported in all nodejs versions](https://nodejs.org/api/events.html#events_events_on_emitter_eventname_options)
+
 ```javascript
 import {FastifySSEPlugin} from "fastify-sse-v2";
 import {on} from "events";
@@ -70,7 +73,7 @@ server.register(FastifySSEPlugin);
 server.get("/", function (req, res) {
     res.sse(
   (async function* () {
-    for await (const event of on(eventEmmitter, "update")) {
+    for await (const [event] of on(eventEmmitter, "update")) {
       yield {
         type: event.name,
         data: JSON.stringify(event),

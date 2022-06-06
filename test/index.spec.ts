@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {FastifyInstance, EventMessage} from "fastify";
+import {FastifyInstance, EventMessage, RouteHandler} from "fastify";
 import {getEventSource, getFastifyServer, getBaseUrl} from "./utils";
 import pushable, {Pushable} from "it-pushable";
 import sinon from "sinon";
@@ -76,7 +76,7 @@ describe("Test SSE plugin", function () {
 
   it("should send single event", function (done) {
     const eventsource = getEventSource(server);
-    source.push({id: "1", event: "message", data: "Something"});
+    source.push({data: "Something", id: "1", event: "message"});
     eventsource.onmessage = (evt => {
       expect(evt.data).equal("Something");
       expect(evt.type).equal("message");
@@ -85,6 +85,29 @@ describe("Test SSE plugin", function () {
       done();
     });
 
+  });
+
+  it("should send multiple events without async iterable", function (done) {
+    const handler: RouteHandler = async (req, resp): Promise<void> => {
+      for await( const event of source) {
+        resp.sse(event);
+        return resp;
+      }
+
+    };
+    getFastifyServer(handler).then((server2) => {
+      const eventsource = getEventSource(server2);
+      source.push({id: "1", event: "message", data: "Something"});
+      eventsource.onmessage = (evt => {
+        expect(evt.data).equal("Something");
+        expect(evt.type).equal("message");
+        expect(evt.lastEventId).equal("1");
+        eventsource.close();
+        server2.close();
+        done();
+      });
+    });
+    
   });
 
   it("should send multiple events", function (done) {
