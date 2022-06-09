@@ -19,10 +19,6 @@ const server = fastify();
 server.register(FastifySSEPlugin);
 ```
 
-#### Fastify@4
-Fastify plugin returns type incompatible with fastify@4 so you will need to cast it:
-`server.register(FastifySSEPlugin as any as FastifyPluginAsync);`
-
 #### Sending events from AsyncIterable source
 
 ```javascript
