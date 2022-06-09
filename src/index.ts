@@ -4,7 +4,7 @@ import {plugin} from "./plugin";
 
 export const FastifySSEPlugin = fastifyPlugin(plugin, {
   name: "fastify-sse-v2",
-  fastify: "3.x",
+  fastify: ">=3",
 });
 
 export default FastifySSEPlugin;
