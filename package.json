@@ -46,13 +46,14 @@
         "eslint-plugin-import": "^2.18.2",
         "eventsource": "^1.0.7",
         "fastify": "3.18.1",
+        "fastify4": "npm:fastify@4",
         "mocha": "^8.3.2",
         "sinon": "^9.0.2",
         "ts-node": "^8.3.0",
         "typescript": "^3.5.1"
     },
     "dependencies": {
-        "fastify-plugin": "2.3.4",
+        "fastify-plugin": "^3.0.1",
         "it-to-stream": "^1.0.0",
         "it-pushable": "^1.4.2"
     },

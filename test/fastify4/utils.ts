@@ -1,14 +1,14 @@
-import fastify, {EventMessage, FastifyInstance, RouteHandler} from "fastify";
-import {FastifySSEPlugin} from "../src";
+import fastify, {EventMessage, FastifyInstance, FastifyPluginAsync, RouteHandler} from "fastify4";
+import {FastifySSEPlugin} from "../../src";
 import {AddressInfo} from "net";
 import EventSource from "eventsource";
-import { isAsyncIterable } from "../src/util";
+import {isAsyncIterable} from "../../src/util";
 
 export async function getFastifyServer(
   source: AsyncIterable<EventMessage> | RouteHandler
 ): Promise<FastifyInstance> {
   const server = fastify();
-  server.register(FastifySSEPlugin);
+  server.register(FastifySSEPlugin as any as FastifyPluginAsync);
   if(!isAsyncIterable(source)) {
     server.get("/", source);
   } else {
@@ -19,7 +19,7 @@ export async function getFastifyServer(
   }
   await server.ready();
   await new Promise<void>((resolve, reject) => {
-    server.listen(0, "127.0.0.1", (err) => {
+    server.listen({port: 0, host: "127.0.0.1"}, (err) => {
       if(err) {
         return reject(err);
       }

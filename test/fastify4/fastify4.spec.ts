@@ -1,11 +1,41 @@
 import {expect} from "chai";
-import {FastifyInstance, EventMessage, RouteHandler} from "fastify";
+import {FastifyInstance, EventMessage, RouteHandler} from "fastify4";
 import {getEventSource, getFastifyServer, getBaseUrl} from "./utils";
 import pushable, {Pushable} from "it-pushable";
 import sinon from "sinon";
 import {get} from "http";
 
-describe("Test SSE plugin", function () {
+declare module "fastify4" {
+
+  interface EventMessage {
+    /**
+     * Message payload
+     */
+    data?: string;
+
+    /**
+     * Message identifier, if set, client will send `Last-Event-ID: <id>` header on reconnect
+     */
+    id?: string;
+
+    /**
+     * Message type
+     */
+    event?: string;
+
+    /**
+     * Update client reconnect interval (how long will client wait before trying to reconnect).
+     */
+    retry?: number;
+  }
+
+  interface FastifyReply {
+    sseContext: {source: Pushable<EventMessage>};
+    sse(source: AsyncIterable<EventMessage> | EventMessage): void;
+  }
+}
+
+describe("Fastify@4 - Test SSE plugin", function () {
 
   let server: FastifyInstance;
   let source: Pushable<EventMessage>;
