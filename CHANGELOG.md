@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v2.2.0...v2.2.1) (2022-06-09)
+
+
+### Bug Fixes
+
+* add fastify@v4 support ([#47](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/47)) ([c9cf800](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/c9cf800eb95e47f2122b2a0a667fb993408818ec))
+
 ## [2.2.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v2.1.0...v2.2.0) (2022-06-06)
 
 
