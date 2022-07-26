@@ -87,5 +87,6 @@ server.get("/", function (req, res) {
 
 ##### Note
 - to remove event listeners (or some other cleanup) when client closes connection,
- you can listen on fastify's [req.raw connection close event](https://nodejs.org/docs/latest-v12.x/api/http.html#http_event_close_2):
+ you can listen on connection closing event: `request.socket.on('close', () => abortController.abort());
+`
 
