@@ -54,7 +54,7 @@ server.get("/", async function (req, res) {
 fastify.get('/listenForChanges', {}, (request, reply) => {
     const listenStream = fastify.db.watch('doc-uuid')
         .on('data', (data)=>reply.sse({ data: JSON.stringify(data) }))
-        .on('delete', () => reply.sse({ event: 'close' })
+        .on('delete', () => reply.sse({ event: 'close' }))
     request.socket.on('close', ()=>listenStream.end())
 })
 ```
