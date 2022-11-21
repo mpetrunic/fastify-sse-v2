@@ -45,7 +45,7 @@
         "eslint": "5.16.0",
         "eslint-plugin-import": "^2.18.2",
         "eventsource": "^1.0.7",
-        "fastify": "3.18.1",
+        "fastify": "3.29.4",
         "fastify4": "npm:fastify@4",
         "mocha": "^8.3.2",
         "sinon": "^9.0.2",
