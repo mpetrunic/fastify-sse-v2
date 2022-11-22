@@ -11,13 +11,11 @@
     "scripts": {
         "test": "mocha -r ts-node/register test/**/*.spec.ts",
         "clean": "rm -rf lib",
-        "lint": "eslint --ext .ts src/",
+        "lint": "eslint src/",
         "check-types": "tsc --noEmit",
         "prepublishOnly": "yarn run build",
         "prebuild": "yarn run clean",
-        "build": "yarn run build:lib && yarn run build:types",
-        "build:lib": "babel src -x .ts -d lib --source-maps",
-        "build:types": "tsc --emitDeclarationOnly --declaration --outDir lib -p tsconfig.build.json"
+        "build": "tsc -p tsconfig.build.json --outDir lib"
     },
     "repository": {
         "type": "git",
@@ -30,34 +28,28 @@
     },
     "homepage": "https://github.com/nodefactoryio/fastify-sse-v2#readme",
     "devDependencies": {
-        "@babel/cli": "^7.14.5",
-        "@babel/core": "^7.14.6",
-        "@babel/preset-env": "^7.14.7",
-        "@babel/preset-typescript": "^7.14.5",
+        "@chainsafe/eslint-config": "^1.1.0",
+        "@rushstack/eslint-patch": "^1.2.0",
         "@types/chai": "^4.1.7",
         "@types/eventsource": "^1.1.2",
         "@types/mocha": "^8.2.2",
         "@types/node": "^16.0.0",
         "@types/sinon": "^9.0.0",
-        "@typescript-eslint/eslint-plugin": "^1.3.0",
-        "@typescript-eslint/parser": "^1.3.0",
         "chai": "^4.2.0",
-        "eslint": "5.16.0",
-        "eslint-plugin-import": "^2.18.2",
+        "eslint": "8.28.0",
         "eventsource": "^1.0.7",
-        "fastify": "3.29.4",
-        "fastify4": "npm:fastify@4",
+        "fastify": "^4.10.2",
         "mocha": "^8.3.2",
         "sinon": "^9.0.2",
         "ts-node": "^8.3.0",
-        "typescript": "^3.5.1"
+        "typescript": "~4.7"
     },
     "dependencies": {
-        "fastify-plugin": "^3.0.1",
-        "it-to-stream": "^1.0.0",
-        "it-pushable": "^1.4.2"
+        "fastify-plugin": "^4.3.0",
+        "it-pushable": "^1.4.2",
+        "it-to-stream": "^1.0.0"
     },
     "peerDependencies": {
-        "fastify": ">=3"
+        "fastify": ">=4"
     }
 }

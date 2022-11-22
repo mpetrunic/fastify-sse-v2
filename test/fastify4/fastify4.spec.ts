@@ -1,57 +1,27 @@
 import {expect} from "chai";
-import {FastifyInstance, EventMessage, RouteHandler} from "fastify4";
+import {FastifyInstance, EventMessage, RouteHandler} from "fastify";
 import {getEventSource, getFastifyServer, getBaseUrl} from "./utils";
 import pushable, {Pushable} from "it-pushable";
 import sinon from "sinon";
 import {get} from "http";
 
-declare module "fastify4" {
-
-  interface EventMessage {
-    /**
-     * Message payload
-     */
-    data?: string;
-
-    /**
-     * Message identifier, if set, client will send `Last-Event-ID: <id>` header on reconnect
-     */
-    id?: string;
-
-    /**
-     * Message type
-     */
-    event?: string;
-
-    /**
-     * Update client reconnect interval (how long will client wait before trying to reconnect).
-     */
-    retry?: number;
-  }
-
-  interface FastifyReply {
-    sseContext: {source: Pushable<EventMessage>};
-    sse(source: AsyncIterable<EventMessage> | EventMessage): void;
-  }
-}
-
-describe("Fastify@4 - Test SSE plugin", function () {
+describe("Fastify - Test SSE plugin", function () {
 
   let server: FastifyInstance;
   let source: Pushable<EventMessage>;
-  
+
   beforeEach(async function () {
     source = pushable<EventMessage>();
     server = await getFastifyServer(source);
   });
-  
+
   afterEach(async function () {
     source.end();
     if(server) {
-      await server.close(); 
+      await server.close();
     }
   });
-  
+
   it("should open event stream", function (done) {
     const eventsource = getEventSource(server);
     eventsource.addEventListener("open", function () {
@@ -60,7 +30,7 @@ describe("Fastify@4 - Test SSE plugin", function () {
       done();
     });
   });
-  
+
   it("should set plugin headers", function (done) {
     try {
       get(getBaseUrl(server), {timeout: 100}, (res) => {
@@ -137,7 +107,7 @@ describe("Fastify@4 - Test SSE plugin", function () {
         done();
       });
     });
-    
+
   });
 
   it("should send multiple events", function (done) {
