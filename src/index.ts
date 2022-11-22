@@ -1,6 +1,6 @@
 import fastifyPlugin from "fastify-plugin";
-import {Pushable} from "it-pushable";
-import {plugin} from "./plugin";
+import { Pushable } from "it-pushable";
+import { plugin } from "./plugin";
 
 export const FastifySSEPlugin = fastifyPlugin(plugin, {
   name: "fastify-sse-v2",
@@ -10,7 +10,6 @@ export const FastifySSEPlugin = fastifyPlugin(plugin, {
 export default FastifySSEPlugin;
 
 declare module "fastify" {
-
   interface EventMessage {
     /**
      * Message payload
@@ -34,7 +33,7 @@ declare module "fastify" {
   }
 
   interface FastifyReply {
-    sseContext: {source: Pushable<EventMessage>};
+    sseContext: { source: Pushable<EventMessage> };
     sse(source: AsyncIterable<EventMessage> | EventMessage): void;
   }
 }
