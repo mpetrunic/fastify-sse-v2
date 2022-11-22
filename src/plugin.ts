@@ -15,7 +15,7 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> =
           if(!this.raw.headersSent) {
             this.sseContext= {source: pushable<EventMessage>()};
             Object.entries(this.getHeaders()).forEach(([key, value]) => {
-              this.raw.setHeader(key, value);
+              this.raw.setHeader(key, value ?? '');
             });
             this.raw.setHeader("Content-Type","text/event-stream");
             this.raw.setHeader("Connection", "keep-alive");
