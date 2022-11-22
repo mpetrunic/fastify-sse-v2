@@ -45,19 +45,18 @@
         "eslint": "5.16.0",
         "eslint-plugin-import": "^2.18.2",
         "eventsource": "^1.0.7",
-        "fastify": "3.29.4",
-        "fastify4": "npm:fastify@4",
+        "fastify": "^4.10.2",
         "mocha": "^8.3.2",
         "sinon": "^9.0.2",
         "ts-node": "^8.3.0",
         "typescript": "^3.5.1"
     },
     "dependencies": {
-        "fastify-plugin": "^3.0.1",
+        "fastify-plugin": "^4.3.0",
         "it-to-stream": "^1.0.0",
         "it-pushable": "^1.4.2"
     },
     "peerDependencies": {
-        "fastify": ">=3"
+        "fastify": ">=4"
     }
 }
