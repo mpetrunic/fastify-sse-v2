@@ -75,7 +75,7 @@ server.get("/", function (req, res) {
   (async function* () {
     for await (const [event] of on(eventEmmitter, "update")) {
       yield {
-        type: event.name,
+        event: event.name,
         data: JSON.stringify(event),
       };
     }
