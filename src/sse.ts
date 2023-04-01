@@ -23,6 +23,9 @@ export function serializeSSEEvent(chunk: EventMessage): string {
   if (chunk.retry) {
     payload += `retry: ${chunk.retry}\n`;
   }
+  if (chunk.comment) {
+    payload += `:${chunk.comment}\n`;
+  }
   if (!payload) {
     return "";
   }
