@@ -30,6 +30,11 @@ declare module "fastify" {
      * Update client reconnect interval (how long will client wait before trying to reconnect).
      */
     retry?: number;
+
+    /**
+     * Message comment
+     */
+    comment?: string;
   }
 
   interface FastifyReply {
@@ -59,4 +64,9 @@ export interface EventMessage {
    * Update client reconnect interval (how long will client wait before trying to reconnect).
    */
   retry?: number;
+
+  /**
+   * Message comment
+   */
+  comment?: string;
 }
