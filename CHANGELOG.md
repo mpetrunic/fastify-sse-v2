@@ -4,44 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.1.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.1.0...v3.1.0) (2023-04-03)
-
-
-### ⚠ BREAKING CHANGES
-
-* Drop support for Fastify v3
+## [3.1.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.0.0...v3.1.0) (2023-04-03)
 
 ### Features
 
 * Added option to send comment in Event ([#60](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/60)) ([a11044a](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/a11044a618c71cd60658915e36ab9f50661cf5e4))
-* enable fastify-sse style api ([#41](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/41)) ([538f67b](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/538f67beb80ab11180f62bf2cccf637e781605cf))
 
 
 ### Bug Fixes
 
 * add fastify@v4 support ([#47](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/47)) ([c9cf800](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/c9cf800eb95e47f2122b2a0a667fb993408818ec))
 * missing closing bracket in readme ([#50](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/50)) ([b3496f2](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/b3496f23fcf03d8224843ce78e0fd05d39dcff83))
-
-
-### Miscellaneous
-
-* bump json5 from 1.0.1 to 1.0.2 ([#55](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/55)) ([9de4a61](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/9de4a61cc6d64944a648f1e3bbec89a2d7b04cc3))
-* **master:** release 2.1.0 ([#44](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/44)) ([726fe84](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/726fe8494864d83b807ff16a7ca7b459e80bacc7))
-* **master:** release 2.2.0 ([#45](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/45)) ([ff3020a](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/ff3020a38257ec40793ac9d04199baa491c32ef0))
-* **master:** release 2.2.1 ([#48](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/48)) ([0a642b5](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/0a642b5fc62f3cd7477a4881b9798676dcad5711))
-* **master:** release 3.0.0 ([#51](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/51)) ([9b451f3](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/9b451f3c2947fc4521edca5b5251f51cde5179e3))
-* **master:** release 3.1.0 ([#59](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/59)) ([1dcb853](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/1dcb85358478dca745f6d903c7d12b15fba07e7b))
-* README.md typo ([#58](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/58)) ([49de69d](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/49de69dfc5d5f2f6d592f3498b7cf7f3ea7be9d7))
-* release 3.1.0 ([3e5ae1f](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/3e5ae1f869e92b201ad03412e6eba3d994c857b3))
-* update `fastify-plugin` ([#54](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/54)) ([d293fdb](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/d293fdb233258ecc73538b793dca708d8332bd2a))
-* update semantic PR check ([758b878](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/758b878a6a0f081a42ff3b04af15f09ab02b3b3b))
-
-## [3.1.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.0.0...v3.1.0) (2023-04-03)
-
-
-### Features
-
-* Added option to send comment in Event ([#60](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/60)) ([a11044a](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/a11044a618c71cd60658915e36ab9f50661cf5e4))
 
 
 ### Miscellaneous
