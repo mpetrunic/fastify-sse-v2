@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.0.0...v3.1.0) (2023-04-03)
+
+
+### Features
+
+* Added option to send comment in Event ([#60](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/60)) ([a11044a](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/a11044a618c71cd60658915e36ab9f50661cf5e4))
+
+
+### Miscellaneous
+
+* bump json5 from 1.0.1 to 1.0.2 ([#55](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/55)) ([9de4a61](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/9de4a61cc6d64944a648f1e3bbec89a2d7b04cc3))
+* README.md typo ([#58](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/58)) ([49de69d](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/49de69dfc5d5f2f6d592f3498b7cf7f3ea7be9d7))
+* update semantic PR check ([758b878](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/758b878a6a0f081a42ff3b04af15f09ab02b3b3b))
+
 ## [3.0.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v2.2.1...v3.0.0) (2022-11-22)
 
 
