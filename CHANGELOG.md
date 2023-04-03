@@ -6,10 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.1.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.0.0...v3.1.0) (2023-04-03)
 
-
 ### Features
 
 * Added option to send comment in Event ([#60](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/60)) ([a11044a](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/a11044a618c71cd60658915e36ab9f50661cf5e4))
+
+
+### Bug Fixes
+
+* add fastify@v4 support ([#47](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/47)) ([c9cf800](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/c9cf800eb95e47f2122b2a0a667fb993408818ec))
+* missing closing bracket in readme ([#50](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/50)) ([b3496f2](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/b3496f23fcf03d8224843ce78e0fd05d39dcff83))
 
 
 ### Miscellaneous
