@@ -22,7 +22,7 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> = async function (
         Object.entries(this.getHeaders()).forEach(([key, value]) => {
           this.raw.setHeader(key, value ?? "");
         });
-        this.raw.setHeader("Content-Type", "text/event-stream");
+        this.raw.setHeader("Content-Type", "text/event-stream; charset=utf-8");
         this.raw.setHeader("Connection", "keep-alive");
         this.raw.setHeader("Cache-Control", "no-cache,no-transform");
         this.raw.setHeader("x-no-compression", 1);
