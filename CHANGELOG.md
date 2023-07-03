@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.1](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.1.0...v3.1.1) (2023-07-03)
+
+
+### Bug Fixes
+
+* add utf-8 charset to content-type ([#68](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/68)) ([4fb15be](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/4fb15be2587da286436c54ecf003178ebe39ee53))
+
+
+### Miscellaneous
+
+* bump semver from 7.3.8 to 7.5.3 ([#69](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/69)) ([34a0870](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/34a08709197549b07f49eb421228ac11a2c80c6f))
+* update mocha ([#64](https://github.com/NodeFactoryIo/fastify-sse-v2/issues/64)) ([066a775](https://github.com/NodeFactoryIo/fastify-sse-v2/commit/066a775a2def4ca09178888517f46c0f9cadbe85))
+
 ## [3.1.0](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.0.0...v3.1.0) (2023-04-03)
 
 ### Features
