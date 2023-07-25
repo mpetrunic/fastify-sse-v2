@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.2](https://github.com/mpetrunic/fastify-sse-v2/compare/v3.1.1...v3.1.2) (2023-07-25)
+
+
+### Bug Fixes
+
+* edge case when user (or server) sends headers before first event is sent ([#73](https://github.com/mpetrunic/fastify-sse-v2/issues/73)) ([77d1b51](https://github.com/mpetrunic/fastify-sse-v2/commit/77d1b51fea9303ff61f9975a971a5b8df3c6a60e))
+
+
+### Miscellaneous
+
+* bump word-wrap from 1.2.3 to 1.2.4 ([#71](https://github.com/mpetrunic/fastify-sse-v2/issues/71)) ([470b474](https://github.com/mpetrunic/fastify-sse-v2/commit/470b474e064929deecb9cc74f843741d5306b4f2))
+* cleanup ([#74](https://github.com/mpetrunic/fastify-sse-v2/issues/74)) ([b77aa24](https://github.com/mpetrunic/fastify-sse-v2/commit/b77aa24bf1e963fc455e09d38da407b3ea154e6b))
+
 ## [3.1.1](https://github.com/NodeFactoryIo/fastify-sse-v2/compare/v3.1.0...v3.1.1) (2023-07-03)
 
 
