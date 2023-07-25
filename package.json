@@ -28,8 +28,7 @@
     },
     "homepage": "https://github.com/nodefactoryio/fastify-sse-v2#readme",
     "devDependencies": {
-        "@chainsafe/eslint-config": "^1.1.0",
-        "@rushstack/eslint-patch": "^1.2.0",
+        "@chainsafe/eslint-config": "^2.0.0",
         "@types/chai": "^4.1.7",
         "@types/eventsource": "^1.1.2",
         "@types/mocha": "^10.0.1",
