@@ -34,6 +34,10 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> = async function (
       if (isAsyncIterable(source)) {
         return handleAsyncIterable(this, source);
       } else {
+        if (!this.sseContext?.source) {
+          this.sseContext = { source: pushable<EventMessage>() };
+          handleAsyncIterable(this, this.sseContext.source);
+        }
         this.sseContext.source.push(source);
         return;
       }

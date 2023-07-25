@@ -110,6 +110,27 @@ describe("Fastify - Test SSE plugin", function () {
 
   });
 
+  it("should send event after headers has been sent by user", function (done) {
+    const handler: RouteHandler = async (req, resp): Promise<void> => {
+      resp.header("Content-Type", "text/event-stream");
+      resp.raw.flushHeaders();
+      resp.sse({id: "1", event: "message", data: "Something"});
+      return resp;
+    };
+    getFastifyServer(handler).then((server2) => {
+      const eventsource = getEventSource(server2);
+      eventsource.onmessage = (evt => {
+        expect(evt.data).equal("Something");
+        expect(evt.type).equal("message");
+        expect(evt.lastEventId).equal("1");
+        eventsource.close();
+        server2.close();
+        done();
+      });
+    });
+
+  });
+
   it("should send multiple events", function (done) {
     const eventsource = getEventSource(server);
     source.push({id: "1", event: "message", data: "Something"});
