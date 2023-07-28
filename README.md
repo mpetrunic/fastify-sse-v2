@@ -59,6 +59,9 @@ fastify.get('/listenForChanges', {}, (request, reply) => {
 })
 ```
 
+##### Note
+- When sending individual events, the connection is kept open until you call `reply.sseContext.source.end()` to terminate the stream.
+
 ##### Sending events from EventEmmiters
 
 * [not supported in all nodejs versions](https://nodejs.org/api/events.html#events_events_on_emitter_eventname_options)
