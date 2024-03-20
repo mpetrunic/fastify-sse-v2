@@ -1,12 +1,12 @@
-import {expect} from "chai";
-import {FastifyInstance, EventMessage, RouteHandler} from "fastify";
-import {getEventSource, getFastifyServer, getBaseUrl} from "./utils";
-import pushable, {Pushable} from "it-pushable";
+import { get } from "http";
+import { expect } from "chai";
+import { FastifyInstance, EventMessage, RouteHandler } from "fastify";
+import EventSource from "eventsource";
+import pushable, { Pushable } from "it-pushable";
 import sinon from "sinon";
-import {get} from "http";
+import { getEventSource, getFastifyServer, getBaseUrl } from "./utils";
 
 describe("Fastify - Test SSE plugin", function () {
-
   let server: FastifyInstance;
   let source: Pushable<EventMessage>;
 
@@ -17,7 +17,7 @@ describe("Fastify - Test SSE plugin", function () {
 
   afterEach(async function () {
     source.end();
-    if(server) {
+    if (server) {
       await server.close();
     }
   });
@@ -33,12 +33,12 @@ describe("Fastify - Test SSE plugin", function () {
 
   it("should set plugin headers", function (done) {
     try {
-      get(getBaseUrl(server), {timeout: 100}, (res) => {
+      get(getBaseUrl(server), { timeout: 100 }, (res) => {
         expect(res.headers["x-test-header2"]).to.be.deep.equal("test2");
         res.destroy();
         done();
       });
-    } catch(e) {
+    } catch (e) {
       done(e);
     }
   });
@@ -65,85 +65,81 @@ describe("Fastify - Test SSE plugin", function () {
       eventsource.close();
       throw "shouldn't be called";
     });
-    eventsource.addEventListener("end", function (e: Event) {
-      expect(e.type).to.be.equal("end");
-      // @ts-ignore
-      expect(e.data).to.be.equal("Stream closed");
-      eventsource.close();
-      done();
+    eventsource.addEventListener("error", function (e) {
+      if (e.data == undefined) {
+        // Connection closed by server
+        eventsource.close();
+        done();
+      } else {
+        throw "shouldn't happen";
+      }
     });
   });
 
   it("should send single event", function (done) {
     const eventsource = getEventSource(server);
-    source.push({data: "Something", id: "1", event: "message"});
-    eventsource.onmessage = (evt => {
+    source.push({ data: "Something", id: "1", event: "message" });
+    eventsource.onmessage = (evt) => {
       expect(evt.data).equal("Something");
       expect(evt.type).equal("message");
       expect(evt.lastEventId).equal("1");
       eventsource.close();
       done();
-    });
-
+    };
   });
 
   it("should send multiple events without async iterable", function (done) {
     const handler: RouteHandler = async (req, resp): Promise<void> => {
-      for await( const event of source) {
+      for await (const event of source) {
         resp.sse(event);
         return resp;
       }
-
     };
     getFastifyServer(handler).then((server2) => {
       const eventsource = getEventSource(server2);
-      source.push({id: "1", event: "message", data: "Something"});
-      eventsource.onmessage = (evt => {
+      source.push({ id: "1", event: "message", data: "Something" });
+      eventsource.onmessage = (evt) => {
         expect(evt.data).equal("Something");
         expect(evt.type).equal("message");
         expect(evt.lastEventId).equal("1");
         eventsource.close();
         server2.close();
         done();
-      });
+      };
     });
-
   });
 
   it("should send event after headers has been sent by user", function (done) {
     const handler: RouteHandler = async (req, resp): Promise<void> => {
       resp.header("Content-Type", "text/event-stream");
       resp.raw.flushHeaders();
-      resp.sse({id: "1", event: "message", data: "Something"});
+      resp.sse({ id: "1", event: "message", data: "Something" });
       return resp;
     };
     getFastifyServer(handler).then((server2) => {
       const eventsource = getEventSource(server2);
-      eventsource.onmessage = (evt => {
+      eventsource.onmessage = (evt) => {
         expect(evt.data).equal("Something");
         expect(evt.type).equal("message");
         expect(evt.lastEventId).equal("1");
         eventsource.close();
         server2.close();
         done();
-      });
+      };
     });
-
   });
 
   it("should send multiple events", function (done) {
     const eventsource = getEventSource(server);
-    source.push({id: "1", event: "message", data: "Something"});
-    source.push({id: "2", event: "message", data: "Something"});
+    source.push({ id: "1", event: "message", data: "Something" });
+    source.push({ id: "2", event: "message", data: "Something" });
     source.end();
     const spy = sinon.spy();
-    eventsource.onmessage = (() => spy());
-    eventsource.onerror = (() => {
+    eventsource.onmessage = () => spy();
+    eventsource.onerror = () => {
       expect(spy.callCount).to.be.equal(2);
       eventsource.close();
       done();
-    });
-
+    };
   });
-
 });
