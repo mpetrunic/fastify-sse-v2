@@ -101,7 +101,7 @@ server.get("/", function (req, res) {
   you can listen on connection closing event: `request.socket.on('close', () => abortController.abort());
 `
 
-##### Change sever send retry behavior
+##### Change server send retry behavior
 
 ```javascript
 import { FastifySSEPlugin } from "fastify-sse-v2";
