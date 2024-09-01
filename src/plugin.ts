@@ -26,9 +26,11 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> = async function (
         this.raw.setHeader("Connection", "keep-alive");
         this.raw.setHeader("Cache-Control", "no-cache,no-transform");
         this.raw.setHeader("x-no-compression", 1);
-        this.raw.write(
-          serializeSSEEvent({ retry: options.retryDelay || 3000 })
-        );
+        if (options.retryDelay !== false) {
+          this.raw.write(
+            serializeSSEEvent({ retry: options.retryDelay || 3000 })
+          );
+        }
         handleAsyncIterable(this, this.sseContext.source);
       }
       if (isAsyncIterable(source)) {
