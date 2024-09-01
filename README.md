@@ -101,9 +101,7 @@ server.get("/", function (req, res) {
   you can listen on connection closing event: `request.socket.on('close', () => abortController.abort());
 `
 
-##### Parameter
-
-- You can set parameter `retryDelay` to `false` to disable the default behavior of sending retry, or set parameter `retryDelay` to `milliseconds` override the default 3000 retry interval .
+##### Change sever send retry behavior
 
 ```javascript
 import { FastifySSEPlugin } from "fastify-sse-v2";
@@ -117,3 +115,7 @@ server.register(FastifySSEPlugin, {
   retryDelay: 5000 // override 5000
 })
 ```
+
+##### Note
+
+- You can set parameter `retryDelay` to `false` to disable the default behavior of sending retry, or set parameter `retryDelay` to `milliseconds` override the default 3000 retry interval .
