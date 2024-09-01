@@ -95,6 +95,12 @@ server.get("/", function (req, res) {
 });
 ```
 
+##### Note
+
+- to remove event listeners (or some other cleanup) when client closes connection,
+  you can listen on connection closing event: `request.socket.on('close', () => abortController.abort());
+`
+
 ##### Parameter
 
 - You can set parameter `retryDelay` to `false` to disable the default behavior of sending retry, or set parameter `retryDelay` to `milliseconds` override the default 3000 retry interval .
@@ -111,9 +117,3 @@ server.register(FastifySSEPlugin, {
   retryDelay: 5000 // override 5000
 })
 ```
-
-##### Note
-
-- to remove event listeners (or some other cleanup) when client closes connection,
-  you can listen on connection closing event: `request.socket.on('close', () => abortController.abort());
-`
