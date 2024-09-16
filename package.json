@@ -1,6 +1,6 @@
 {
     "name": "fastify-sse-v2",
-    "version": "4.0.0",
+    "version": "4.1.0",
     "packageManager": "yarn@1.22.19",
     "description": "Fastify plugin for sending server side events.",
     "main": "lib/index.js",

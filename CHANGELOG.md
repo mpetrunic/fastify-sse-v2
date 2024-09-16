@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0](https://github.com/mpetrunic/fastify-sse-v2/compare/v4.0.0...v4.1.0) (2024-09-16)
+
+
+### Features
+
+* add disable retryDelay ([#86](https://github.com/mpetrunic/fastify-sse-v2/issues/86)) ([760fd6a](https://github.com/mpetrunic/fastify-sse-v2/commit/760fd6a72f3e6ba46752a8e5432815f4e5e8d4f7))
+
+
+### Miscellaneous
+
+* bump braces from 3.0.2 to 3.0.3 ([#82](https://github.com/mpetrunic/fastify-sse-v2/issues/82)) ([6bdaa62](https://github.com/mpetrunic/fastify-sse-v2/commit/6bdaa62c90c9e0b02588d2228cfc54e77391a25c))
+* bump micromatch from 4.0.5 to 4.0.8 ([#87](https://github.com/mpetrunic/fastify-sse-v2/issues/87)) ([866547c](https://github.com/mpetrunic/fastify-sse-v2/commit/866547c5a49b4fb2faf4f7754b5ea0a3d8ea0224))
+* bump path-to-regexp from 1.8.0 to 1.9.0 ([#88](https://github.com/mpetrunic/fastify-sse-v2/issues/88)) ([6e0f9c2](https://github.com/mpetrunic/fastify-sse-v2/commit/6e0f9c2b16b70f17d0900607e33e49c8c25a77bd))
+
 ## [4.0.0](https://github.com/mpetrunic/fastify-sse-v2/compare/v3.1.2...v4.0.0) (2024-03-20)
 
 
