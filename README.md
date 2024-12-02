@@ -116,6 +116,21 @@ server.register(FastifySSEPlugin, {
 })
 ```
 
+##### Change default highWaterMark
+
+```javascript
+import { FastifySSEPlugin } from "fastify-sse-v2";
+
+const server = fastify();
+
+server.register(FastifySSEPlugin) // highWaterMark defaults to 16384 bytes (16kb)
+
+server.register(FastifySSEPlugin, {
+  highWaterMark: 1024 // override default setting of 16384 (16kb) with 1024 (1kb)
+})
+```
+
 ##### Note
 
 - You can set parameter `retryDelay` to `false` to disable the default behavior of sending retry, or set parameter `retryDelay` to `milliseconds` override the default 3000 retry interval .
+- You can set parameter `highWaterMark` to define the buffer size (in bytes) that determines when the buffer is full and a 'flush' should be performed. Default is 16kb. (![Learn more](https://nodejs.org/en/learn/modules/backpressuring-in-streams#how-does-backpressure-resolve-these-issues))
