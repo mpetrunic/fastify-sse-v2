@@ -31,14 +31,14 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> = async function (
             serializeSSEEvent({ retry: options.retryDelay || 3000 })
           );
         }
-        handleAsyncIterable(this, this.sseContext.source);
+        handleAsyncIterable(this, this.sseContext.source, options);
       }
       if (isAsyncIterable(source)) {
-        return handleAsyncIterable(this, source);
+        return handleAsyncIterable(this, source, options);
       } else {
         if (!this.sseContext?.source) {
           this.sseContext = { source: pushable<EventMessage>() };
-          handleAsyncIterable(this, this.sseContext.source);
+          handleAsyncIterable(this, this.sseContext.source, options);
         }
         this.sseContext.source.push(source);
         return;
@@ -49,8 +49,9 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> = async function (
 
 function handleAsyncIterable(
   reply: FastifyReply,
-  source: AsyncIterable<EventMessage>
+  source: AsyncIterable<EventMessage>,
+  options: SsePluginOptions
 ): void {
-  const highWaterMark = reply.options.highWaterMark || 16384;
+  const highWaterMark = options.highWaterMark || 16384;
   toStream(transformAsyncIterable(source), { highWaterMark }).pipe(reply.raw);
 }
