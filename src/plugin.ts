@@ -51,5 +51,6 @@ function handleAsyncIterable(
   reply: FastifyReply,
   source: AsyncIterable<EventMessage>
 ): void {
-  toStream(transformAsyncIterable(source)).pipe(reply.raw);
+  const highWaterMark = reply.options.highWaterMark || 16384;
+  toStream(transformAsyncIterable(source), { highWaterMark }).pipe(reply.raw);
 }
