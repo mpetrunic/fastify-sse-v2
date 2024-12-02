@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.2.0](https://github.com/mpetrunic/fastify-sse-v2/compare/v4.1.0...v4.2.0) (2024-12-02)
+
+
+### Features
+
+* add the ability to override default stream buffer size ([fd0382d](https://github.com/mpetrunic/fastify-sse-v2/commit/fd0382de17c1530e38898bb87c215ac69cf4c24a))
+
+
+### Miscellaneous
+
+* bump cross-spawn from 7.0.3 to 7.0.6 ([#90](https://github.com/mpetrunic/fastify-sse-v2/issues/90)) ([2553e02](https://github.com/mpetrunic/fastify-sse-v2/commit/2553e02cf862423c1269ee5baaf04fed416acf65))
+
 ## [4.1.0](https://github.com/mpetrunic/fastify-sse-v2/compare/v4.0.0...v4.1.0) (2024-09-16)
 
 
