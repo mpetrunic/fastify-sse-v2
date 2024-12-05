@@ -17,7 +17,7 @@ export function serializeSSEEvent(chunk: EventMessage): string {
     payload += `event: ${chunk.event}\n`;
   }
   if (chunk.data) {
-    for (const line of chunk.data.split('\n')) {
+    for (const line of chunk.data.split("\n")) {
       payload += `data: ${line}\n`;
     }
   }
