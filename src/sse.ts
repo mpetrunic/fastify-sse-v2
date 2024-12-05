@@ -17,7 +17,9 @@ export function serializeSSEEvent(chunk: EventMessage): string {
     payload += `event: ${chunk.event}\n`;
   }
   if (chunk.data) {
-    payload += `data: ${chunk.data}\n`;
+    for (const line of chunk.data.split("\n")) {
+      payload += `data: ${line}\n`;
+    }
   }
   if (chunk.retry) {
     payload += `retry: ${chunk.retry}\n`;

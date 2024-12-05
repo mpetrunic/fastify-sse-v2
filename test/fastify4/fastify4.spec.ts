@@ -88,6 +88,18 @@ describe("Fastify - Test SSE plugin", function () {
     };
   });
 
+  it("should send single event with multiline message", function (done) {
+    const eventsource = getEventSource(server);
+    source.push({ data: "Something\nSomethingInNewLine", id: "1", event: "message" });
+    eventsource.onmessage = (evt) => {
+      expect(evt.data).equal("Something\nSomethingInNewLine");
+      expect(evt.type).equal("message");
+      expect(evt.lastEventId).equal("1");
+      eventsource.close();
+      done();
+    };
+  });
+
   it("should send multiple events without async iterable", function (done) {
     const handler: RouteHandler = async (req, resp): Promise<void> => {
       for await (const event of source) {
