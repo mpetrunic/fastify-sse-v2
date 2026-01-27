@@ -5,12 +5,16 @@ const server = fastify();
 server.register(FastifySSEPlugin);
 
 server.get("/", async function (req, res) {
-  res.sse((async function * source () {
-    for (let i = 0; i < 10; i++) {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      yield {id: String(i), data: "Some message"};
-    }
-  })());
+  res.sse({id: "1", data: "Some message"});
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  res.sse({id: "2", data: "Some message"});
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  res.sse({id: "3", data: "Some message"});
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  res.sse({id: "4", data: "Some message"});
+  throw new Error("Some error after sending SSE");
 });
 
 server.listen(4000, "127.0.0.1");

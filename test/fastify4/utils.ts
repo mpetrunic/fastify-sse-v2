@@ -7,7 +7,7 @@ import {isAsyncIterable} from "../../src/util";
 export async function getFastifyServer(
   source: AsyncIterable<EventMessage> | RouteHandler
 ): Promise<FastifyInstance> {
-  const server = fastify();
+  const server = fastify({logger: true});
   server.register(FastifySSEPlugin as any as FastifyPluginAsync);
   if(!isAsyncIterable(source)) {
     server.get("/", source);

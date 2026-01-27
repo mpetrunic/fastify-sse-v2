@@ -19,6 +19,7 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> = async function (
       //if this already set, it's not first event
       if (!this.raw.headersSent) {
         this.sseContext = { source: pushable<EventMessage>() };
+        void this.hijack();
         Object.entries(this.getHeaders()).forEach(([key, value]) => {
           this.raw.setHeader(key, value ?? "");
         });
@@ -26,10 +27,13 @@ export const plugin: FastifyPluginAsync<SsePluginOptions> = async function (
         this.raw.setHeader("Connection", "keep-alive");
         this.raw.setHeader("Cache-Control", "no-cache,no-transform");
         this.raw.setHeader("x-no-compression", 1);
+        this.raw.statusCode = 200;
         if (options.retryDelay !== false) {
           this.raw.write(
             serializeSSEEvent({ retry: options.retryDelay || 3000 })
           );
+        } else {
+          this.raw.flushHeaders();
         }
         handleAsyncIterable(this, this.sseContext.source, options);
       }
