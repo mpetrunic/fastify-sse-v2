@@ -4,13 +4,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [4.2.2](https://github.com/mpetrunic/fastify-sse-v2/compare/v4.2.1...v4.2.2) (2026-01-27)
-
-
-### Bug Fixes
-
-* throwing exceptions after headers are sent ([#100](https://github.com/mpetrunic/fastify-sse-v2/issues/100)) ([bdf73ed](https://github.com/mpetrunic/fastify-sse-v2/commit/bdf73edd71cd490f19ba0b8ef6fedc90aa7d305f))
-
 ## [4.2.1](https://github.com/mpetrunic/fastify-sse-v2/compare/v4.2.0...v4.2.1) (2024-12-05)
 
 
