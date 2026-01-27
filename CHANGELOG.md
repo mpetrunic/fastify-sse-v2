@@ -37,6 +37,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * release 4.2.2 ([ece5add](https://github.com/mpetrunic/fastify-sse-v2/commit/ece5addbfb4a1e652e057a853e1dcd5a40934fbe))
 * update `fastify-plugin` ([#54](https://github.com/mpetrunic/fastify-sse-v2/issues/54)) ([d293fdb](https://github.com/mpetrunic/fastify-sse-v2/commit/d293fdb233258ecc73538b793dca708d8332bd2a))
 
+## [4.2.2](https://github.com/mpetrunic/fastify-sse-v2/compare/v4.2.2...v4.2.2) (2026-01-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* there is no "end" event when stream is closing in case you depended on it
+* Drop support for Fastify v3
+
+### Features
+
+* add disable retryDelay ([#86](https://github.com/mpetrunic/fastify-sse-v2/issues/86)) ([760fd6a](https://github.com/mpetrunic/fastify-sse-v2/commit/760fd6a72f3e6ba46752a8e5432815f4e5e8d4f7))
+* add the ability to override default stream buffer size ([fd0382d](https://github.com/mpetrunic/fastify-sse-v2/commit/fd0382de17c1530e38898bb87c215ac69cf4c24a))
+* Added option to send comment in Event ([#60](https://github.com/mpetrunic/fastify-sse-v2/issues/60)) ([a11044a](https://github.com/mpetrunic/fastify-sse-v2/commit/a11044a618c71cd60658915e36ab9f50661cf5e4))
+* enable fastify-sse style api ([#41](https://github.com/mpetrunic/fastify-sse-v2/issues/41)) ([538f67b](https://github.com/mpetrunic/fastify-sse-v2/commit/538f67beb80ab11180f62bf2cccf637e781605cf))
+
+
+### Bug Fixes
+
+* add fastify@v4 support ([#47](https://github.com/mpetrunic/fastify-sse-v2/issues/47)) ([c9cf800](https://github.com/mpetrunic/fastify-sse-v2/commit/c9cf800eb95e47f2122b2a0a667fb993408818ec))
+* add utf-8 charset to content-type ([#68](https://github.com/mpetrunic/fastify-sse-v2/issues/68)) ([4fb15be](https://github.com/mpetrunic/fastify-sse-v2/commit/4fb15be2587da286436c54ecf003178ebe39ee53))
+* edge case when user (or server) sends headers before first event is sent ([#73](https://github.com/mpetrunic/fastify-sse-v2/issues/73)) ([77d1b51](https://github.com/mpetrunic/fastify-sse-v2/commit/77d1b51fea9303ff61f9975a971a5b8df3c6a60e))
+* handle newlines in the data properly ([#93](https://github.com/mpetrunic/fastify-sse-v2/issues/93)) ([f83d8d2](https://github.com/mpetrunic/fastify-sse-v2/commit/f83d8d28a47f5ce87e9100943145029fb8ae3a86))
+* missing closing bracket in readme ([#50](https://github.com/mpetrunic/fastify-sse-v2/issues/50)) ([b3496f2](https://github.com/mpetrunic/fastify-sse-v2/commit/b3496f23fcf03d8224843ce78e0fd05d39dcff83))
+* remove default stream close event ([#81](https://github.com/mpetrunic/fastify-sse-v2/issues/81)) ([311c920](https://github.com/mpetrunic/fastify-sse-v2/commit/311c920e0325f355afe824b685ca680d93c71c36))
+* throwing exceptions after headers are sent ([#100](https://github.com/mpetrunic/fastify-sse-v2/issues/100)) ([bdf73ed](https://github.com/mpetrunic/fastify-sse-v2/commit/bdf73edd71cd490f19ba0b8ef6fedc90aa7d305f))
+
+
+### Miscellaneous Chores
+
+* release 3.1.0 ([3e5ae1f](https://github.com/mpetrunic/fastify-sse-v2/commit/3e5ae1f869e92b201ad03412e6eba3d994c857b3))
+* release 4.2.2 ([ece5add](https://github.com/mpetrunic/fastify-sse-v2/commit/ece5addbfb4a1e652e057a853e1dcd5a40934fbe))
+* update `fastify-plugin` ([#54](https://github.com/mpetrunic/fastify-sse-v2/issues/54)) ([d293fdb](https://github.com/mpetrunic/fastify-sse-v2/commit/d293fdb233258ecc73538b793dca708d8332bd2a))
+
 ## [4.2.1](https://github.com/mpetrunic/fastify-sse-v2/compare/v4.2.0...v4.2.1) (2024-12-05)
 
 
