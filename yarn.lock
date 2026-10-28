@@ -967,9 +967,9 @@ fast-redact@^3.1.1:
   integrity sha512-+0em+Iya9fKGfEQGcd62Yv6onjBmmhV1uh86XVfOU8VwAe6kaFdQCWI9s0/Nnugx5Vd9tdbZ7e6gE2tR9dzXdw==
 
 fast-uri@^2.0.0, fast-uri@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-2.1.0.tgz#9279432d6b53675c90116b947ed2bbba582d6fb5"
-  integrity sha512-qKRta6N7BWEFVlyonVY/V+BMLgFqktCUV0QjT259ekAIlbVrMaFnFLxJ4s/JPl4tou56S1BzPufI60bLe29fHA==
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-2.4.8.tgz#7283e40a4ee32deccf04610dcf0d47f88abe2905"
+  integrity sha512-knw8ym69bDOF980l2z0tDKh7XB9zfsUmpMmoQUx9KskazmddvnhNntiTzen4VsiW7qVWiVZkrcd5Pj2bziC3gA==
 
 fastify-plugin@^4.3.0:
   version "4.3.0"
